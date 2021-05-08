@@ -25,7 +25,7 @@ EXPOSE $PORT
 WORKDIR /rails-playground
 COPY Gemfile /rails-playground/Gemfile
 COPY Gemfile.lock /rails-playground/Gemfile.lock
-RUN bundle install
+RUN bundle check || bundle install
 
 # COPY ../compose /rails-playground
 COPY . .
@@ -33,7 +33,8 @@ COPY . .
 # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/
 # RUN chmod +x /usr/bin/entrypoint.sh
-# ENTRYPOINT ["entrypoint.sh"]
+# ENTRYPOINT ["./usr/bin/entrypoint.sh"]
+
 
 # Configure the main process to run when running the image
 ENTRYPOINT ["rails", "server", "-b", "0.0.0.0"]
