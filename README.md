@@ -19,6 +19,9 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Deployment instructions (with docker)
+  * `docker build -t rails-playground .`
+  * `docker run =d -p 3000:3000 rails-playground --rm`
 
-* ...
+* Deployment without docker
+  * `bin/rails server`
